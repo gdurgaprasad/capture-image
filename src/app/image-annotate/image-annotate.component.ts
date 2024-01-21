@@ -78,7 +78,7 @@ export class ImageAnnotateComponent {
     /*CONVERT RECEIVED WEBCAM IMAGE AS DATAURL */
     const imageSrc = webcamImage.imageAsDataUrl
     /* ADD CAPTURED IMAGE TO CANVAS ELEMENT */
-    fabric.Image.fromURL(imageSrc, (img) => {
+    fabric.Image.fromURL(imageSrc, (img:any) => {
       this.canvas.setBackgroundImage(img, this.canvas.renderAll.bind(this.canvas), {
         scaleX: this.width,
         scaleY: this.canvas.height
@@ -86,11 +86,11 @@ export class ImageAnnotateComponent {
     });
 
     /* WHEN AN OBJECT IS ADDED/MODIFIED IN CANVAS - ADD THOSE TO UNDO STACK */
-    this.canvas.on("object:added", (e) => {
+    this.canvas.on("object:added", () => {
       this.saveCanvasState()
     });
 
-    this.canvas.on("object:modified", (e) => {
+    this.canvas.on("object:modified", () => {
       this.saveCanvasState()
     });
   }

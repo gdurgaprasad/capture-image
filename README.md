@@ -12,6 +12,7 @@ Appliation that allows user to capture images from webcam and the capture image 
 1. **Webcam Capture:** Utilizes [ngx-webcam](https://www.npmjs.com/package/ngx-webcam) to capture images through the webcam.
 2. **Canvas Drawing:** Uses [Fabric.js](https://www.npmjs.com/package/fabric) to handle canvas and drawing functionalities.
 3. **JSON Viewer:** Integrates [ngx-json-viewer](https://www.npmjs.com/package/ngx-json-viewer) for displaying and visualizing JSON data.
+3. **Angular Material:** Integrates [AngularMaterial](https://material.angular.io/) for Material Design Angular components.
 
 ## Installation
 1. Clone the repository:
@@ -45,6 +46,7 @@ Appliation that allows user to capture images from webcam and the capture image 
 - [ngx-webcam](https://www.npmjs.com/package/ngx-webcam): Webcam capturing library.
 - [fabric](https://www.npmjs.com/package/fabric): HTML5 canvas library.
 - [ngx-json-viewer](https://www.npmjs.com/package/ngx-json-viewer): JSON data viewer.
+- [Angular Material](https://material.angular.io/): Material Design components for Angular.
 
 ## License
 
