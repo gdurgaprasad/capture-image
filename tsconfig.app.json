@@ -3,6 +3,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "fabric": ["node_modules/fabric/dist/fabric.js"],
     "types": []
   },
   "files": [
