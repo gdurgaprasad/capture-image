@@ -1,4 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
+import { fabric } from 'fabric';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
@@ -9,8 +10,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
-
-declare const fabric: any
 
 type CanvasShape = 'Circle' | 'Ellipse' | 'Line' | 'Polygon' | 'Polyline' | 'Rectangle' | 'Triangle'
 type DownloadCanvasType = 'jpeg' | 'png'
@@ -42,7 +41,7 @@ export class ImageAnnotateComponent {
   height: number = 500
 
   /* FABRIC CANVAS ELEMENT */
-  canvas!: any
+  canvas!: fabric.Canvas
   /*CAPTURE ERRORS ON WEBCAM INITIALIZATION/USAGE */
   errors: WebcamInitError[] = [];
   /*STORE CAPTURED IMAGE */

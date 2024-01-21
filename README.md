@@ -48,6 +48,9 @@ Appliation that allows user to capture images from webcam and the capture image 
 - [ngx-json-viewer](https://www.npmjs.com/package/ngx-json-viewer): JSON data viewer.
 - [Angular Material](https://material.angular.io/): Material Design components for Angular.
 
+## Demo
+- For demo vist - [Image Annotation](https://image-annotation-blond.vercel.app/image-annotate)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
