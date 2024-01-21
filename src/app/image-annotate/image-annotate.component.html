@@ -10,22 +10,24 @@
         }@if(webcamImage){
         <button mat-raised-button color="warn" (click)="clearCanvas()">
             <mat-icon>delete</mat-icon>
-            Delete Image
+            Delete Photo
         </button>
         }
     </div>
-
-    <!-- SHOW LIVE CAMERA PREVIEW ONLY IF THERE IS NO CAPTURED IMAGE -->
-    @if (!webcamImage) {
-    <webcam [height]="height" [width]="width" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
-        [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
-    }
-
     <div class="mt-2"></div>
 
-    <canvas id="canvas-img" class="text-align-center" [width]="width" [height]="height">
-    </canvas>
 
+    <div class="text-align-center">
+        <!-- SHOW LIVE CAMERA PREVIEW ONLY IF THERE IS NO CAPTURED IMAGE -->
+        @if (!webcamImage) {
+        <webcam [height]="height" [width]="width" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
+        }
+
+        <div class="mt-2"></div>
+        <canvas id="canvas-img" [width]="width" [height]="height">
+        </canvas>
+    </div>
     @if (webcamImage) {
     <section>
         <div class="example-label">Annotation Options:</div>
