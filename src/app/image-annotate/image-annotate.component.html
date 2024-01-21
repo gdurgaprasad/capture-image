@@ -1,0 +1,101 @@
+<div class="p-1">
+
+    <!-- CAPTURE PHOTO BUTTON -->
+    <div class="text-align-center">
+        @if(!webcamImage){
+        <button mat-raised-button color="accent" (click)="triggerSnapshot()">
+            <mat-icon>add_a_photo</mat-icon>
+            Capture Photo
+        </button>
+        }@if(webcamImage){
+        <button mat-raised-button color="warn" (click)="clearCanvas()">
+            <mat-icon>delete</mat-icon>
+            Delete Image
+        </button>
+        }
+    </div>
+
+    <!-- SHOW LIVE CAMERA PREVIEW ONLY IF THERE IS NO CAPTURED IMAGE -->
+    @if (!webcamImage) {
+    <webcam [height]="height" [width]="width" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+        [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
+    }
+
+    <div class="mt-2"></div>
+
+    <canvas id="canvas-img" class="text-align-center" [width]="width" [height]="height">
+    </canvas>
+
+    @if (webcamImage) {
+    <section>
+        <div class="example-label">Annotation Options:</div>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
+                <mat-icon>polyline</mat-icon>
+                Add Shapes
+            </button>
+
+            <mat-menu #menu="matMenu">
+                @for (canvasShape of canvasShapes; track $index) {
+                <button mat-menu-item (click)="onCanvasShapeClick(canvasShape)">{{canvasShape}}</button>
+                }
+            </mat-menu>
+
+
+            <button mat-raised-button color="primary" (click)="onDrawingModeSelected()">
+                <mat-icon>brush</mat-icon>
+                Paint Brush
+            </button>
+
+            <button mat-raised-button color="warn" (click)="undo()">
+                <mat-icon>undo</mat-icon>
+                Undo
+            </button>
+
+            <button mat-raised-button color="warn" (click)="redo()">
+                <mat-icon>redo</mat-icon>
+                Redo
+            </button>
+
+            <button mat-raised-button color="accent" [matMenuTriggerFor]="downloadCanvasMenu">
+                <mat-icon>image</mat-icon>
+                Download JPG/PNG
+            </button>
+
+            <mat-menu #downloadCanvasMenu="matMenu">
+                @for (downloadCanvasOption of downloadCanvasOptions; track $index) {
+                <button mat-menu-item (click)="downloadCanvas(downloadCanvasOption)">{{downloadCanvasOption |
+                    uppercase}}
+                </button>
+                }
+            </mat-menu>
+
+            <button mat-raised-button color="accent" [matMenuTriggerFor]="jsonOptionsMenu">
+                <mat-icon>download</mat-icon>
+                Download/View JSON
+            </button>
+
+            <mat-menu #jsonOptionsMenu="matMenu">
+                @for (jsonOption of jsonOptions; track $index) {
+                <button mat-menu-item
+                    (click)="jsonOption === 'DOWNLOAD JSON' ? downloadJson(): openJsonViewerDialog(jsonViewerTemplate)">{{jsonOption}}</button>
+                }
+            </mat-menu>
+        </div>
+    </section>
+    }
+</div>
+
+<!-- TEMPLATE FOR VIEWING CANVAS AS JSON -->
+<ng-template #jsonViewerTemplate>
+    <div class="p-2">
+        <h2 mat-dialog-title>JSON View Of Canvas Image</h2>
+        <mat-dialog-content class="mat-typography">
+            <ngx-json-viewer [json]=" canvasJsonObject"></ngx-json-viewer>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        </mat-dialog-actions>
+    </div>
+
+</ng-template>

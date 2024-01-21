@@ -1,0 +1,32 @@
+.text-align-center {
+  text-align: center
+}
+
+.p-1 {
+  padding: 1rem
+}
+
+.mt-2{
+  margin-top:0.5rem !important
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  width:15%;
+  font-weight: bold;
+}
+
+.example-button-row {
+  display: table-cell;
+  width:100%
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
